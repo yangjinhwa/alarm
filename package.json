@@ -1,0 +1,21 @@
+{
+  "name": "alarm",
+  "version": "1.0.0",
+  "description": "alarm javascript project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangjinhwa/alarm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yangjinhwa/alarm/issues"
+  },
+  "homepage": "https://github.com/yangjinhwa/alarm#readme",
+  "dependencies": {}
+}
