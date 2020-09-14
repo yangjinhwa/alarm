@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html"
+    "start": "parcel ./src/index.html"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,7 @@
     "url": "https://github.com/yangjinhwa/alarm/issues"
   },
   "homepage": "https://github.com/yangjinhwa/alarm#readme",
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.28.0"
+  }
 }
