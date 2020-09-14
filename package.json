@@ -2,10 +2,10 @@
   "name": "alarm",
   "version": "1.0.0",
   "description": "alarm javascript project",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
+    "start": "parcel src/index.html"
   },
   "repository": {
     "type": "git",
