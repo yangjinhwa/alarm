@@ -46,13 +46,24 @@ function createAlarmInnerText(id, alertTime, message) {
 }
 
 function createDom(list) {
-  const {id, alertTime, message, timeMode, alertMode} = list;
+  const {id, alertTime, defaultTime, message, timeMode, alertMode} = list
+  const alarmTime = moment(alertTime).format('YYYY.MM.DD hh:mm a');
   const listLi = document.createElement('li');
   listLi.setAttribute('id',id);
-  const alarmInnerText = createAlarmInnerText(id, alertTime, message);
+  const alarmInnerText = createAlarmInnerText(id, alarmTime, message);
   listLi.appendChild(alarmInnerText);
   listLi.appendChild(createBtnWrap(id));
   return listLi
+}
+
+export function drawAlertMessage(message) {
+  messageList.push(message);
+  alertMsgBox.innerHTML = null;
+  messageList.forEach(message => {
+    const div = window.document.createElement('div');
+    div.innerHTML = message;
+    alertMsgBox.appendChild(div);
+  })
 }
 
 export function drawAlarmList(sortId) {

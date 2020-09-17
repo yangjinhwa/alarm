@@ -24,10 +24,14 @@ alarmListUl.addEventListener('click', (e) => {
   const targetBtnId = e.target.id;
 });
 
-function timer() {
+function alertTimer() {
   setInterval(() => {
-    const localTime = new Date();
-    drawLocalTime(localTime);
+    const nowTime = moment().format('YYYY-MM-DDTHH:mm:ss');
+    ids.forEach(id => {
+      if (byIds[id].alertTime === nowTime) {
+        drawAlertMessage(byIds[id].message)
+      }
+    })
   }, 1000);
 }
 

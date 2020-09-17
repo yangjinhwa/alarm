@@ -1,5 +1,6 @@
 import { drawAlarmList } from "./draw-dom";
 import { alertTextValue, alarmListUl } from './index';
+import moment from "moment";
 
 export const dummyData = {
   "id1" : {
@@ -37,12 +38,22 @@ export function addAlarm() {
   ids.push(newId);
 }
 
+function sortAlarmList() {
+  const sortId = ids.sort((a,b) => {
+    const beginningTime = moment(byIds[a].alertTime, 'YYYY.MM.DD HH:mm');
+    const endTime = moment(byIds[b].alertTime, 'YYYY.MM.DD HH:mm');
+    return beginningTime - endTime;
+  });
+  return sortId
+}
 export function loadAlarmList() {
-  // 인풋 초기화
-  alertTextValue.value = '';
   // 리스트뷰 초기화
   alarmListUl.innerHTML = null;
+
+  // 리스트 내림차순
+  const sortId = sortAlarmList();
+
   // data update 때 마다 view redraw
-  drawAlarmList(ids);
+  drawAlarmList(sortId);
 }
 
