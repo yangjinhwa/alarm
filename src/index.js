@@ -1,30 +1,22 @@
-import { drawLocalTime } from "./draw-dom";
-import { byIds, ids, loadAlarmList } from "./store";
+import {drawAlarmList, drawAlertMessage, drawLocalTime, drawTimeNow} from "./draw-dom";
+import {addAlarm, byIds, ids, loadAlarmList, removeList} from "./store";
+import moment from "moment";
 
 export const alarmListUl = window.document.getElementById('alarmLists');
-export const dateTimeSelect = window.document.getElementById('dateTimeSelect');
+export const defaultTimeSelect = window.document.getElementById('defaultTimeSelect');
 export const alertModeSelect = window.document.getElementById('alertModeSelect');
 export const alertTextValue = window.document.getElementById('alertTextValue');
 export const alertModeTimeSelect = window.document.getElementById('alertModeTimeSelect');
 export const timeModeSelect = window.document.getElementById('timeModeSelect');
+export const alertMsgBox = window.document.getElementById('alertMsgBox');
 const addAlarmBtn = window.document.getElementById('addAlarmBtn');
-
-let createNum = 0;
-
-function addAlarm() {
-  const newId = `alarmId${createNum++}`;
-  byIds[newId] = {
-    alertTime: alertModeTimeSelect.value,
-    message: alertTextValue.value,
-    timeMode: timeModeSelect.value,
-    alertMode: alertModeSelect.value,
-  };
-  ids.push(newId);
-  loadAlarmList();
-}
+export const messageList = [];
 
 addAlarmBtn.addEventListener('click', () => {
   addAlarm();
+  // 인풋 초기화
+  alertTextValue.value = '';
+  loadAlarmList();
 });
 
 // buttonWrap 에 event 심기 (보류)

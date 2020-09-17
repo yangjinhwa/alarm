@@ -3,22 +3,39 @@ import { alertTextValue, alarmListUl } from './index';
 
 export const dummyData = {
   "id1" : {
-    alertTime: '09:30 AM',
+    alertTime: '2020-09-14T17:04',
+    defaultTime: '2020-09-14T17:04',
     message: '메시지1',
     timeMode: '',
     alertMode: '',
-
+    isTurnOn: true
   },
   "id2" : {
-    alertTime: '09:30 PM',
+    alertTime: '2020-09-14T17:04',
+    defaultTime: '2020-09-14T17:04',
     message: '메시지1',
     timeMode: '',
     alertMode: '',
+    isTurnOn: true
   }
 };
 
 export const byIds = {};
 export const ids = [];
+let createNum = 0;
+
+export function addAlarm() {
+  const newId = `alarmId${createNum++}`;
+  byIds[newId] = {
+    alertTime: alertModeTimeSelect.value + `:00`, // 2020-09-14T17:04
+    defaultTime: defaultTimeSelect.value, // 2020-09-14T17:04
+    message: alertTextValue.value,
+    timeMode: timeModeSelect.value,
+    alertMode: alertModeSelect.value,
+    isTurnOn: true
+  };
+  ids.push(newId);
+}
 
 export function loadAlarmList() {
   // 인풋 초기화
