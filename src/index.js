@@ -32,4 +32,6 @@ function timer() {
 }
 
 timer();
+drawTimeNow();
+drawLocalTime();
 

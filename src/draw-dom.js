@@ -1,12 +1,18 @@
-import { alarmListUl, dateTimeSelect, alertModeTimeSelect } from './index';
+import { alarmListUl, defaultTimeSelect, alertModeTimeSelect, alertMsgBox, messageList } from './index';
 import { byIds, dummyData, ids } from "./store";
 import moment from "moment";
 
-export function drawLocalTime(localTime) {
+export function drawTimeNow() {
   const realTimeString = window.document.getElementById('realTime');
-  realTimeString.innerHTML = localTime;
-  dateTimeSelect.value = moment().format('YYYY-MM-DDThh:mm');
-  alertModeTimeSelect.value = moment().format('HH:mm');
+  setInterval(() => {
+    const localTime = new Date().toLocaleString();
+    realTimeString.innerHTML = localTime;
+  }, 1000)
+}
+
+export function drawLocalTime() {
+  defaultTimeSelect.value = moment().format('YYYY-MM-DDTHH:mm');
+  alertModeTimeSelect.value = moment().format('YYYY-MM-DDTHH:mm');
 }
 
 function createBtnWrap(id) {
