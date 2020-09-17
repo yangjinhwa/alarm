@@ -22,6 +22,15 @@ addAlarmBtn.addEventListener('click', () => {
 // buttonWrap 에 event 심기 (보류)
 alarmListUl.addEventListener('click', (e) => {
   const targetBtnId = e.target.id;
+  const targetAlarmId = targetBtnId.split('-')[0];
+
+  if (targetBtnId.includes('stopBtn')) {
+    console.log('stop!');
+  } else if (targetBtnId.includes('removeBtn')) {
+    removeList(targetAlarmId);
+    loadAlarmList();
+  }
+  const getTarget = window.document.getElementById(targetBtnId);
 });
 
 function alertTimer() {
@@ -35,7 +44,7 @@ function alertTimer() {
   }, 1000);
 }
 
-timer();
 drawTimeNow();
 drawLocalTime();
+alertTimer();
 

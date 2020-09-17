@@ -46,6 +46,13 @@ function sortAlarmList() {
   });
   return sortId
 }
+
+export function removeList(targetAlarmId) {
+  delete byIds[targetAlarmId];
+  const targetIdIndex = ids.indexOf(targetAlarmId);
+  ids.splice(targetIdIndex,1);
+}
+
 export function loadAlarmList() {
   // 리스트뷰 초기화
   alarmListUl.innerHTML = null;
